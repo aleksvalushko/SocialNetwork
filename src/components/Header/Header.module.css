@@ -1,0 +1,13 @@
+.header{
+    background: darkcyan;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 69.9vw;
+    margin-bottom: 5%;
+}
+
+.header img{
+    width: 7%;
+    margin-left: 2%;
+}

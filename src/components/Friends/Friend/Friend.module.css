@@ -1,0 +1,14 @@
+.friend{
+    text-align: center;
+    margin: 5%;
+}
+
+.friend img{
+    width: 65%;
+    border-radius: 60%;
+}
+
+.friend a{
+    color: black;
+    font-size: 1.2vw;
+}

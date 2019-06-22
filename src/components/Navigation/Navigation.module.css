@@ -1,0 +1,22 @@
+.nav{
+    grid-area: 2 / 1 / 3 / 2;
+    background: darkcyan;
+    padding: 10% 0 0 15%;
+    line-height: 2.5;
+    height: 65vw;
+    font-size: 1.5vw;
+    margin-right: 5%;
+}
+
+.nav a {
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.nav a.active{
+    color: blueviolet;
+}
+
+.settings {
+    padding-top: 30%;
+}

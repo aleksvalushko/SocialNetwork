@@ -1,0 +1,14 @@
+.profile{
+    display: grid;
+    grid-template: 37% 15% 16% 32.5% / 20% 40% 15% 15% 10%;
+    height: 65vw;
+}
+
+.image{
+    grid-area: 1 / 1 / 2 / 6;
+    padding-bottom: 5%;
+}
+
+.image img{
+    width: 101%;
+}

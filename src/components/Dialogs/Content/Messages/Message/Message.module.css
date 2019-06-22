@@ -1,0 +1,27 @@
+.message{
+    display: grid;
+    grid-template: 80% 20% / 30% 70%;
+    margin-bottom: 3%;
+}
+
+.avatar{
+    grid-area: 1 / 1 / 2 / 2;
+    text-align: center;
+}
+
+.name{
+    grid-area: 2 / 1 / 3 / 2;
+    text-align: center;
+    color: gray;
+    font-size: 1.5vw;
+}
+
+.text{
+    grid-area: 1 / 2 / 3 / 3;
+    align-self: center;
+    width: 25vw;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 5% 5%;
+    font-size: 1.2vw;
+}

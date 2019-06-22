@@ -1,0 +1,10 @@
+.appWrapper{
+    display: grid;
+    grid-template: 8% 92% / 15% 84%;
+    width: 70vw;
+    margin: 0 15%;
+}
+
+.appWrapperContent{
+    grid-area: 2 / 2 / 3 / 3;
+}
