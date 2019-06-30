@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,MAAM;EACJ,SAAS,EAAE,GAAG;EACd,WAAW,EAAE,GAAG;EAChB,QAAC;IACC,eAAe,EAAE,IAAI;IACrB,KAAK,EAAE,KAAK",
+"sources": ["Music.module.sass"],
+"names": [],
+"file": "Music.module.css"
+}

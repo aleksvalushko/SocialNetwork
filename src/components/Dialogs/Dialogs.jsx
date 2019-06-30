@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Dialogs.module.css';
+import mod from './Dialogs.module.sass';
 import Content from './Content/Content';
 import PropTypes from 'prop-types';
 

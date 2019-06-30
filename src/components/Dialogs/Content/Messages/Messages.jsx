@@ -1,8 +1,8 @@
 import React from 'react';
-import mod from './Messages.module.css';
+import mod from './Messages.module.sass';
 import Message from './Message/Message';
 import PropTypes from 'prop-types';
-import {addMessageAC, updateMessageAC} from "../../../../redux/store";
+import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducers";
 
 const Messages = ({dialogs, dispatch}) => {
 
@@ -15,7 +15,6 @@ const Messages = ({dialogs, dispatch}) => {
         let message = newTextMessage.current.value;
         let action = addMessageAC(message);
         dispatch(action);
-        dialogs.newMessageText = '';
     };
 
     let updateNewMessage = () => {

@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,QAAQ;EACJ,OAAO,EAAE,IAAI;EACb,aAAa,EAAE,qCAAuC;EACtD,MAAM,EAAE,KAAK;;AAEjB,MAAM;EACF,SAAS,EAAE,OAAa;EACxB,UAAG;IACC,KAAK,EAAE,IAAI",
+"sources": ["Profile.module.sass"],
+"names": [],
+"file": "Profile.module.css"
+}

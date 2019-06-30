@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './News.module.css';
+import mod from './News.module.sass';
 
 const News = () => {
     return(

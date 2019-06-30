@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Profile.module.css';
+import mod from './Profile.module.sass';
 import NewPost from './NewPost/NewPost';
 import Info from './Info/Info';
 import PropTypes from 'prop-types';
@@ -20,5 +20,4 @@ const Profile = ({profile, dispatch}) => {
 export default Profile;
 
 Profile.propTypes = {
-  state: PropTypes.object
 };

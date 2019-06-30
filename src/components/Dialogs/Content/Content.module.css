@@ -1,6 +1,8 @@
-.content{
-    display: grid;
-    grid-template-columns: 30% 70%;
-    padding-left: 3%;
-    padding-top: 5%;
-}
+.content {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  padding-left: 3%;
+  padding-top: 5%;
+  height: 100vh; }
+
+/*# sourceMappingURL=Content.module.css.map */

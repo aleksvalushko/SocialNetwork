@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Message.module.css';
+import mod from './Message.module.sass';
 import PropTypes from 'prop-types';
 
 const Message = (props) => {

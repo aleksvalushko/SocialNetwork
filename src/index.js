@@ -1,11 +1,22 @@
-import store from "./redux/store";
+// import store from "./ui/store";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
+import profileReducer from "./redux/profileReducers";
+import dialogsReducer from "./redux/dialogsReducers";
+import friendsReducer from "./redux/friendsReducer";
+import {combineReducers, createStore} from "redux";
 
+let reducers = combineReducers({
+    profile: profileReducer,
+    dialogs: dialogsReducer,
+    friends: friendsReducer
+});
+
+let store = createStore(reducers);
 
 store.subscribe(() => {
     let state = store.getState();
@@ -15,7 +26,7 @@ store.subscribe(() => {
 let rerenderWholeTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} dispatch={store.dispatch.bind(store)}/>
+            <App state={state} store={store}/>
         </BrowserRouter>, document.getElementById('root'));
 };
 

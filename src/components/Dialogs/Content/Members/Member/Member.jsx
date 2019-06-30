@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Member.module.css';
+import mod from './Member.module.sass';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
 

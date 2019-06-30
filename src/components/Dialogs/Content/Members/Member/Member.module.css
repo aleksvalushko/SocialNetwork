@@ -1,22 +1,18 @@
-.item{
-    align-self: center;
-    font-size: 1.5vw;
-    padding: 5% 0;
-}
-
-.item a{
-    text-decoration: none;
-    color: gray;
-}
-
-.item:before{
-    content: '\2022';
+@charset "UTF-8";
+.item {
+  align-self: center;
+  font-size: 1.5vw;
+  padding: 5% 0; }
+  .item:before {
+    content: "•";
     padding-right: 2%;
     color: gray;
+    font-size: 2vw; }
+  .item a {
+    text-decoration: none;
+    color: gray; }
+  .item:hover {
     font-size: 2vw;
-}
+    color: black; }
 
-.item a:hover{
-    font-size: 2vw;
-    color: black;
-}
+/*# sourceMappingURL=Member.module.css.map */

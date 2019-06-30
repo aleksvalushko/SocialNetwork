@@ -1,9 +1,8 @@
-.title{
-    font-size: 2vw;
-    font-weight: 500;
-}
-
-a {
+.title {
+  font-size: 2vw;
+  font-weight: 500; }
+  .title a {
     text-decoration: none;
-    color: white;
-}
+    color: white; }
+
+/*# sourceMappingURL=Settings.module.css.map */

@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Settings.module.css';
+import mod from './Settings.module.sass';
 
 const Settings = () => {
     return(

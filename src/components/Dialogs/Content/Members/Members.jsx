@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Members.module.css';
+import mod from './Members.module.sass';
 import Member from './Member/Member';
 import PropTypes from 'prop-types';
 

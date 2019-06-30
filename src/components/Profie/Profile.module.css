@@ -1,14 +1,11 @@
-.profile{
-    display: grid;
-    grid-template: 37% 15% 16% 32.5% / 20% 40% 15% 15% 10%;
-    height: 65vw;
-}
+.profile {
+  display: grid;
+  grid-template: 37% 15% 16% 32.5%/20% 40% 15% 15% 10%;
+  height: 130vh; }
 
-.image{
-    grid-area: 1 / 1 / 2 / 6;
-    padding-bottom: 5%;
-}
+.image {
+  grid-area: 1/1/2/6; }
+  .image img {
+    width: 100%; }
 
-.image img{
-    width: 101%;
-}
+/*# sourceMappingURL=Profile.module.css.map */

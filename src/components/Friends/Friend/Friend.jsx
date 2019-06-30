@@ -1,16 +1,16 @@
 import React from 'react';
-import mod from './Friend.module.css';
+import mod from './Friend.module.sass';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
 
-const Friend = (props) => {
+const Friend = (friends) => {
 
     return (
         <div className={mod.friend}>
             <div className={mod.avatar}>
-                <NavLink to={'/Friends/' + props.index}>
-                    <img src={props.avatar} alt="avatar"/>
-                    <div className={mod.name}>{props.name}</div>
+                <NavLink to={'/Friends/' + friends.index}>
+                    <img src={friends.avatar} alt="avatar"/>
+                    <div className={mod.name}>{friends.name}</div>
                 </NavLink>
             </div>
         </div>

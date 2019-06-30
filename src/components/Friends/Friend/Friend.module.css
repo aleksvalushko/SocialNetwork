@@ -1,14 +1,12 @@
-.friend{
-    text-align: center;
-    margin: 5%;
-}
-
-.friend img{
-    width: 65%;
-    border-radius: 60%;
-}
-
-.friend a{
+.friend {
+  text-align: center;
+  margin: 5%; }
+  .friend a {
     color: black;
     font-size: 1.2vw;
-}
+    text-decoration: none; }
+  .friend img {
+    width: 65%;
+    border-radius: 60%; }
+
+/*# sourceMappingURL=Friend.module.css.map */

@@ -1,5 +1,5 @@
 import React from 'react';
-import mod from './Info.module.css';
+import mod from './Info.module.sass';
 import PropTypes from 'prop-types';
 
 const Info = ({profile}) => {

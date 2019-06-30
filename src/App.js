@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './Apps.sass';
 import Header from './components/Header/Header';
 import Navigation from "./components/Navigation/Navigation";
 import Profile from './components/Profie/Profile';
@@ -16,12 +16,11 @@ const App = (props) => {
     let profile = props.state.profile;
     let dialogs = props.state.dialogs;
     let friends = props.state.friends;
-    let dispatch = props.dispatch;
-
+    let dispatch = props.store.dispatch;
     return (
         <div className="appWrapper">
             <Header/>
-            <Navigation/>
+            <Navigation friends={friends}/>
             <div className="appWrapperContent">
                 <Route path='/Profile' render={() => <Profile
                     profile={profile} dispatch={dispatch}/>}/>
