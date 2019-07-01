@@ -3,12 +3,13 @@ import mod from './Content.module.sass';
 import Members from './Members/Members';
 import Messages from './Messages/Messages';
 import PropTypes from 'prop-types';
+import MessagesContainer from "./Messages/MessagesContainer";
 
-const Content = ({dialogs, dispatch}) => {
+const Content = ({store, dialogs}) => {
     return (
         <div className={mod.content}>
             <Members dialogs={dialogs}/>
-            <Messages dialogs={dialogs} dispatch={dispatch} />
+            <MessagesContainer store={store} dialogs={dialogs} />
         </div>
     );
 };

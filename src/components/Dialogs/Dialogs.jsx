@@ -3,12 +3,12 @@ import mod from './Dialogs.module.sass';
 import Content from './Content/Content';
 import PropTypes from 'prop-types';
 
-const Dialogs = ({dialogs, dispatch}) => {
+const Dialogs = ({store, dialogs}) => {
 
     return(
         <div className={mod.dialogs}>
             <div className={mod.title}>DIALOGS</div>
-            <Content dialogs={dialogs} dispatch={dispatch}/>
+            <Content store={store} dialogs={dialogs} />
         </div>
     );
 };

@@ -11,21 +11,22 @@ import Settings from "./components/Settings/Settings";
 import Friends from "./components/Friends/Friends";
 import PropTypes from 'prop-types';
 
-const App = (props) => {
+const App = ({state, store}) => {
 
-    let profile = props.state.profile;
-    let dialogs = props.state.dialogs;
-    let friends = props.state.friends;
-    let dispatch = props.store.dispatch;
+    let profile = state.profile;
+    let dialogs = state.dialogs;
+    let friends = state.friends;
+    let dispatch = store.dispatch;
+
     return (
         <div className="appWrapper">
             <Header/>
             <Navigation friends={friends}/>
             <div className="appWrapperContent">
                 <Route path='/Profile' render={() => <Profile
-                    profile={profile} dispatch={dispatch}/>}/>
+                    store={store} profile={profile}/>}/>
                 <Route path='/Dialogs' render={() => <Dialogs
-                    dialogs={dialogs} dispatch={dispatch}/>}/>
+                    store={store} dialogs={dialogs}/>}/>
                 <Route path='/Friends' render={() => <Friends friends={friends}/>}/>
                 <Route path='/News' render={() => <News />}/>
                 <Route path='/Music' render={() => <Music />}/>

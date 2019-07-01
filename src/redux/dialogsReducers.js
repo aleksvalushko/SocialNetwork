@@ -27,7 +27,7 @@ const dialogsReducer = (state = initState, action) => {
     switch (action.type) {
         case ADD_MESSAGE:
             let newMessage = {
-                message: action.text,
+                message: state.newMessageText,
                 name: 'Masha',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ'
             };

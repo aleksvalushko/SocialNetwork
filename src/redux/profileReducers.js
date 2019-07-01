@@ -30,7 +30,7 @@ const profileReducer = (state = initState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                text: action.text,
+                text: state.newTextPost,
                 likes: 0
             };
             // state.profile.posts.unshift(newPost);
