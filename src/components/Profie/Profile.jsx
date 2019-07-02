@@ -1,10 +1,10 @@
 import React from 'react';
 import mod from './Profile.module.sass';
-import Info from './Info/Info';
 import PropTypes from 'prop-types';
 import NewPostContainer from "./NewPost/NewPostContainer";
+import InfoContainer from "./Info/InfoContainer";
 
-const Profile = ({store, profile}) => {
+const Profile = () => {
 
     return(
         <div className={mod.profile}>
@@ -12,8 +12,8 @@ const Profile = ({store, profile}) => {
                 <img
                     src="https://nika-web.ru/images/uslugi/socseti.jpg" alt="image"/>
             </div>
-            <Info profile={profile} />
-            <NewPostContainer store={store} profile={profile}/>
+            <InfoContainer />
+            <NewPostContainer />
         </div>
     );
 };

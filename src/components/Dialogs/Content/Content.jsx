@@ -4,12 +4,14 @@ import Members from './Members/Members';
 import Messages from './Messages/Messages';
 import PropTypes from 'prop-types';
 import MessagesContainer from "./Messages/MessagesContainer";
+import MembersContainer from "./Members/MembersContainer";
 
-const Content = ({store, dialogs}) => {
+const Content = () => {
+
     return (
         <div className={mod.content}>
-            <Members dialogs={dialogs}/>
-            <MessagesContainer store={store} dialogs={dialogs} />
+            <MembersContainer />
+            <MessagesContainer />
         </div>
     );
 };

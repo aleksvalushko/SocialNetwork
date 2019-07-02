@@ -9,6 +9,7 @@ import profileReducer from "./redux/profileReducers";
 import dialogsReducer from "./redux/dialogsReducers";
 import friendsReducer from "./redux/friendsReducer";
 import {combineReducers, createStore} from "redux";
+import {Provider} from "react-redux";
 
 let reducers = combineReducers({
     profile: profileReducer,
@@ -23,10 +24,14 @@ store.subscribe(() => {
     rerenderWholeTree(state);
 });
 
-let rerenderWholeTree = (state) => {
+let rerenderWholeTree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state} store={store}/>
+            <Provider store={store}>
+                <App
+                    // store={store} state={state}
+                />
+            </Provider>
         </BrowserRouter>, document.getElementById('root'));
 };
 

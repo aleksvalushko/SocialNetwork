@@ -8,26 +8,32 @@ import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import Friends from "./components/Friends/Friends";
 import PropTypes from 'prop-types';
+import FriendsContainer from "./components/Friends/FriendsContainer";
 
-const App = ({state, store}) => {
+const App = () => {
 
-    let profile = state.profile;
+    /*let profile = state.profile;
     let dialogs = state.dialogs;
     let friends = state.friends;
-    let dispatch = store.dispatch;
+    let dispatch = store.dispatch;*/
 
     return (
         <div className="appWrapper">
             <Header/>
-            <Navigation friends={friends}/>
+            <Navigation
+                // friends={friends}
+            />
             <div className="appWrapperContent">
                 <Route path='/Profile' render={() => <Profile
-                    store={store} profile={profile}/>}/>
+                    // store={store} profile={profile}
+                />}/>
                 <Route path='/Dialogs' render={() => <Dialogs
-                    store={store} dialogs={dialogs}/>}/>
-                <Route path='/Friends' render={() => <Friends friends={friends}/>}/>
+                    // store={store} dialogs={dialogs}
+                />}/>
+                <Route path='/Friends' render={() => <FriendsContainer
+                    // friends={friends}
+                />}/>
                 <Route path='/News' render={() => <News />}/>
                 <Route path='/Music' render={() => <Music />}/>
                 <Route path='/Settings' render={() => <Settings />}/>

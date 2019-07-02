@@ -1,12 +1,10 @@
 import React from 'react';
-import mod from './Messages.module.sass';
-import Message from './Message/Message';
 import PropTypes from 'prop-types';
 import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducers";
-import Dialogs from "../../Dialogs";
 import Messages from "./Messages";
+import {connect} from 'react-redux'
 
-const MessagesContainer = ({dialogs, store}) => {
+/*const MessagesContainer = ({dialogs, store}) => {
 
     let addNewMessage = () => {
         store.dispatch(addMessageAC());
@@ -19,7 +17,26 @@ const MessagesContainer = ({dialogs, store}) => {
 
     return (<Messages addNewMessage={addNewMessage} updateNewMessage={updateNewMessage}
                     messages={dialogs.messages} newMessageText={dialogs.newMessageText}/>);
+};*/
+
+const mapStateToProps = (state) => {
+    return{
+        messages: state.dialogs.messages,
+        newMessageText: state.dialogs.newMessageText
+    }
 };
+const mapDispatchToProps = (dispatch) => {
+    return{
+        addNewMessage: () => {
+            dispatch(addMessageAC());
+        },
+        updateNewMessage: (text) => {
+            dispatch(updateMessageAC(text));
+        }
+    }
+};
+
+const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
 
 export default MessagesContainer;
 
