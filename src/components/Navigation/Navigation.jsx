@@ -12,6 +12,7 @@ const Navigation = ({friends}) => {
                 <NavLink to = '/Friends' activeClassName={mod.active} ><Route path = '/Friends' render = {() =>
                     <Friends friends={friends}/>}>Friends</Route></NavLink>
             </div>
+            <div className={mod.item}><NavLink to="/Users" activeClassName={mod.active}>Users</NavLink></div>
             <div className={mod.item}><NavLink to = "/News" activeClassName={mod.active}>News</NavLink></div>
             <div className={mod.item}><NavLink to = "/Music" activeClassName={mod.active}>Music</NavLink></div>
             <div className={`${mod.item} ${mod.settings}`}>

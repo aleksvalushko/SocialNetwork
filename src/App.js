@@ -10,6 +10,7 @@ import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
 import PropTypes from 'prop-types';
 import FriendsContainer from "./components/Friends/FriendsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
 
 const App = () => {
 
@@ -34,6 +35,7 @@ const App = () => {
                 <Route path='/Friends' render={() => <FriendsContainer
                     // friends={friends}
                 />}/>
+                <Route path='/Users' render={ () => <UsersContainer />} />
                 <Route path='/News' render={() => <News />}/>
                 <Route path='/Music' render={() => <Music />}/>
                 <Route path='/Settings' render={() => <Settings />}/>
