@@ -1,16 +1,16 @@
 import React from 'react';
 import './Apps.sass';
-import Header from './components/Header/Header';
 import Navigation from "./components/Navigation/Navigation";
-import Profile from './components/Profie/Profile';
 import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import PropTypes from 'prop-types';
 import FriendsContainer from "./components/Friends/FriendsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profie/ProfileContainer";
+import Login from "./components/Login/Login";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App = () => {
 
@@ -21,12 +21,13 @@ const App = () => {
 
     return (
         <div className="appWrapper">
-            <Header/>
+            <HeaderContainer />
             <Navigation
                 // friends={friends}
             />
             <div className="appWrapperContent">
-                <Route path='/Profile' render={() => <Profile
+                <Route path='/Login' render={() => <Login />}/>
+                <Route path='/Profile/:userId?' render={() => <ProfileContainer
                     // store={store} profile={profile}
                 />}/>
                 <Route path='/Dialogs' render={() => <Dialogs

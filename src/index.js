@@ -8,33 +8,45 @@ import {BrowserRouter} from "react-router-dom";
 import profileReducer from "./redux/profileReducers";
 import dialogsReducer from "./redux/dialogsReducers";
 import friendsReducer from "./redux/friendsReducer";
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import usersReducer from "./redux/usersReducers";
+import authReducer from "./redux/authReducers";
+import loginReducer from "./redux/loginReducers";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from 'redux-devtools-extension';
 
 let reducers = combineReducers({
     profile: profileReducer,
     dialogs: dialogsReducer,
     friends: friendsReducer,
-    users: usersReducer
+    users: usersReducer,
+    auth: authReducer,
+    login: loginReducer
 });
 
-let store = createStore(reducers);
+let store = createStore(reducers, applyMiddleware(thunk));
 
+/*
 store.subscribe(() => {
     let state = store.getState();
-    // rerenderWholeTree(state);
+    rerenderWholeTree(state);
 });
+*/
+
+window.store = store;
 
 // let rerenderWholeTree = () => {
-    ReactDOM.render(
+ReactDOM.render(
+    <Provider store={store}>
         <BrowserRouter>
-            <Provider store={store}>
-                <App
-                    // store={store} state={state}
-                />
-            </Provider>
-        </BrowserRouter>, document.getElementById('root'));
+
+            <App
+                // store={store} state={state}
+            />
+
+        </BrowserRouter>
+    </Provider>, document.getElementById('root'));
 // };
 
 // If you want your app to work offline and load faster, you can change

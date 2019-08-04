@@ -2,11 +2,19 @@
   background: darkblue;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   position: fixed;
   width: 69.9vw;
   height: 10vh; }
   .header img {
-    width: 7%;
+    width: 15%;
     margin-left: 2%; }
+  .header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5vw; }
+
+.login {
+  padding-right: 5%; }
 
 /*# sourceMappingURL=Header.module.css.map */

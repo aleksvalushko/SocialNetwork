@@ -1,10 +1,14 @@
-const ADD_POST = 'SN/NEW_POST/ADD_POST';
+const ADD_POST = 'SN/PROFILE/NEW_POST/ADD_POST';
 export const addPostAC = (postText) => (
     {type: ADD_POST, text: postText}
 );
-const UPDATE_POST = 'SN/NEW_POST/UPDATE_POST';
+const UPDATE_POST = 'SN/PROFILE/NEW_POST/UPDATE_POST';
 export const updatePostAC = (newText) => (
     {type: UPDATE_POST, text: newText}
+);
+const SET_USER_PROFILE = 'SN/PROFILE/SET_USER_PROFILE';
+export const setUserProfile = (profile) => (
+    {type: SET_USER_PROFILE, profile}
 );
 
 let initState = {
@@ -23,7 +27,8 @@ let initState = {
             text: 'It is my first post!',
             likes: 9
         }],
-    newTextPost: ''
+    newTextPost: '',
+    profile: null
 };
 
 const profileReducer = (state = initState, action) => {
@@ -39,6 +44,9 @@ const profileReducer = (state = initState, action) => {
         case UPDATE_POST:
             // state.newTextPost = action.text;
             return {...state, newTextPost: action.text};
+        case SET_USER_PROFILE:
+            // state.newTextPost = action.text;
+            return {...state, profile: action.profile};
         default:
             return state;
     }
