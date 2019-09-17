@@ -9,8 +9,9 @@ const Navigation = ({friends}) => {
             <div className={mod.item}><NavLink to = "/Profile" activeClassName={mod.active}>Profile</NavLink></div>
             <div className={mod.item}><NavLink to = "/Dialogs" activeClassName={mod.active}>Messages</NavLink></div>
             <div className={mod.item}>
-                <NavLink to = '/Friends' activeClassName={mod.active} ><Route path = '/Friends' render = {() =>
-                    <Friends friends={friends}/>}>Friends</Route></NavLink>
+                <NavLink to='/Friends' activeClassName={mod.active}>
+                    <Route path='/Friends' render={() =>
+                        <Friends friends={friends}/>}>Friends</Route></NavLink>
             </div>
             <div className={mod.item}><NavLink to="/Users" activeClassName={mod.active}>Users</NavLink></div>
             <div className={mod.item}><NavLink to = "/News" activeClassName={mod.active}>News</NavLink></div>

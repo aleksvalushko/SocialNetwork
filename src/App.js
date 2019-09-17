@@ -27,7 +27,7 @@ const App = () => {
             />
             <div className="appWrapperContent">
                 <Route path='/Login' render={() => <Login />}/>
-                <Route path='/Profile/:userId?' render={() => <ProfileContainer
+                <Route path='/Profile/:userId?' render={() => <ProfileContainer // знак ? после :userId - параметр :userId не обязателен
                     // store={store} profile={profile}
                 />}/>
                 <Route path='/Dialogs' render={() => <Dialogs

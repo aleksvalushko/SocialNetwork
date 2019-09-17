@@ -75,7 +75,7 @@ let initState = {
             location: {city: 'Minsk', country: 'Belarus'}
         }*/
     ],
-    pageSize: 20,
+    pageSize: 30,
     currentPage: 1,
     totalUsersCount: 0,
     isFetching: true

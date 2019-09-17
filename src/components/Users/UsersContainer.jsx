@@ -17,6 +17,7 @@ import {connect} from 'react-redux';
 import Users from "./Users";
 import * as axios from "axios/index";
 import Preloader from "../../common/Preloader/Preloader";
+import {usersAPI} from "../../api/api";
 
 class UsersContainer extends React.Component {
     /*constructor(props){
@@ -25,27 +26,27 @@ class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.setIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}
-        &count=${this.props.pageSize}`).then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setTotalUsersCount(response.data.totalCount);
-            this.props.setIsFetching(false);
-        });
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then(data => {
+                this.props.setUsers(data.items);
+                this.props.setTotalUsersCount(data.totalCount);
+                this.props.setIsFetching(false);
+            });
     };
 
     onPagesChange = (pageNumber) => {
         this.props.setCurrentPage(pageNumber);
         this.props.setIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}
-        &count=${this.props.pageSize}`).then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setIsFetching(false);
-        });
+        usersAPI.getUsers(pageNumber, this.props.pageSize)
+            .then(data => {
+                this.props.setUsers(data.items);
+                this.props.setIsFetching(false);
+            });
     };
 
     render() {
         return <>
-            {this.props.isFetching ? <Preloader /> : null}
+            {this.props.isFetching ? <Preloader/> : null}
             <Users totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
                    currentPage={this.props.currentPage}
@@ -60,7 +61,7 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
 
-    return{
+    return {
         users: state.users.users,
         pageSize: state.users.pageSize,
         currentPage: state.users.currentPage,

@@ -1,25 +1,20 @@
 import React from 'react';
 import Header from "./Header";
-import * as axios from "axios/index";
+import axios from './../../dal/axiosInstance';
 import {connect} from 'react-redux';
 import {setAuthUserData} from "../../redux/authReducers";
+import {usersAPI} from "../../api/api";
 
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
         debugger
-        axios.get('https://social-network.samuraijs.com/api/1.0/auth/me', {
-            withCredentials: true,
-            headers: {
-                'API-KEY': '2a70584b-20f7-4ff5-8c15-684fb9f4be7b'
-            }
-        })
-            .then(response => {
+        usersAPI.authMe()
+            .then(data => {
                 debugger
-                if (response.data.resultCode === 0) {
-                    alert('We are log in!)');
-                    let {id, email, login} = response.data.data;
-                    this.props.setAuthUserData = {id, email, login};
+                if (data.resultCode === 0) {
+                    let {id, email, login} = data.data;
+                    this.props.setAuthUserData(id, email, login);
                 }
             });
     };
@@ -30,7 +25,7 @@ class HeaderContainer extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-    return{
+    return {
         isAuth: state.auth.isAuth,
         login: state.auth.login
     }

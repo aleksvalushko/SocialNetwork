@@ -9,6 +9,10 @@ const SET_MESSAGE = 'SN/LOGIN/MESSAGE';
 export const setMessage = (message) => (
     {type: SET_MESSAGE, message}
 );
+/*const SET_USER_ID = 'SN/LOGIN/USER_ID';
+export const setUserId = (userId) => (
+    {type: SET_USER_ID, userId}
+);*/
 
 export const statuses = {
     INIT: 'INIT',
@@ -40,6 +44,12 @@ const loginReducer = (state = initState, action) => {
                 message: action.message
             }
         }
+        /*case SET_USER_ID: {
+            return{
+                ...state,
+                userId: action.userId
+            }
+        }*/
         default: {
             return state;
         }
@@ -60,7 +70,7 @@ export const login = (email, password, rememberMe, captcha) => (dispatch) => {
             dispatch(setIsAuth(true));
         } else {
             dispatch(setStatus(statuses.ERROR));
-            dispatch(setMessage(result.data.messages[0]))
+            dispatch(setMessage(result.data.messages[0]));
         }
     });
 };
