@@ -13,8 +13,7 @@ import {Provider} from "react-redux";
 import usersReducer from "./redux/usersReducers";
 import authReducer from "./redux/authReducers";
 import loginReducer from "./redux/loginReducer";
-import thunk from "redux-thunk";
-import {composeWithDevTools} from 'redux-devtools-extension';
+import thunkMiddleware from "redux-thunk";
 
 let reducers = combineReducers({
     profile: profileReducer,
@@ -25,7 +24,7 @@ let reducers = combineReducers({
     login: loginReducer
 });
 
-let store = createStore(reducers, applyMiddleware(thunk));
+let store = createStore(reducers, applyMiddleware(thunkMiddleware));
 
 /*
 store.subscribe(() => {
@@ -40,11 +39,7 @@ window.store = store;
 ReactDOM.render(
     <Provider store={store}>
         <BrowserRouter>
-
-            <App
-                // store={store} state={state}
-            />
-
+            <App /*store={store} state={state}*/ />
         </BrowserRouter>
     </Provider>, document.getElementById('root'));
 // };

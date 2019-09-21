@@ -5,9 +5,11 @@ export const usersAPI = {
         return axios.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data);
     },
-    deleteUsers(id){
-        return axios.delete(`follow/${id}`)
-            .then(response => response.data);
+    unfollow(userId){
+        return axios.delete(`follow/${userId}`)
+    },
+    follow(userId){
+        return axios.post(`follow/${userId}`)
     },
     authMe(){
         return axios.get('auth/me')

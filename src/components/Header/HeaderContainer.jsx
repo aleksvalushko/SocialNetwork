@@ -8,10 +8,8 @@ import {usersAPI} from "../../api/api";
 class HeaderContainer extends React.Component {
 
     componentDidMount() {
-        debugger
         usersAPI.authMe()
             .then(data => {
-                debugger
                 if (data.resultCode === 0) {
                     let {id, email, login} = data.data;
                     this.props.setAuthUserData(id, email, login);

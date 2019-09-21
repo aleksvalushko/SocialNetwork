@@ -23,12 +23,14 @@ export const setIsFetchingAC = (isFetching) => (
     {type: SET_IS_FETCHING, isFetching}
 );*/
 
+import {usersAPI} from "../api/api";
+
 const FOLLOW = 'SN/USERS/FOLLOW';
-export const follow = (userId) => (
+export const followSuccess = (userId) => (
     {type: FOLLOW, userId}
 );
 const UNFOLLOW = 'SN/USERS/UNFOLLOW';
-export const unfollow = (userId) => (
+export const unfollowSuccess = (userId) => (
     {type: UNFOLLOW, userId}
 );
 const SET_USERS = 'SN/USERS/SET_USERS';
@@ -46,6 +48,10 @@ export const setTotalUsersCount = (totalCount) => (
 const SET_IS_FETCHING = 'SN/USERS/SET_IS_FETCHING';
 export const setIsFetching = (isFetching) => (
     {type: SET_IS_FETCHING, isFetching}
+);
+const TOGGLE_FOLLOWING_IN_PROGRESS = 'SN/USERS/TOGGLE_FOLLOWING_IN_PROGRESS';
+export const toggleFollowingInProgress = (isFetching, userId) => (
+    {type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId}
 );
 
 let initState = {
@@ -78,7 +84,8 @@ let initState = {
     pageSize: 30,
     currentPage: 1,
     totalUsersCount: 0,
-    isFetching: true
+    isFetching: true,
+    followingInProgress: []
 };
 
 const usersReducer = (state = initState, action) => {
@@ -103,6 +110,13 @@ const usersReducer = (state = initState, action) => {
                     return u;
                 })
             };
+        case TOGGLE_FOLLOWING_IN_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id != action.userId)
+            };
         case SET_USERS:
             return {
                 ...state,
@@ -118,13 +132,50 @@ const usersReducer = (state = initState, action) => {
                 ...state,
                 totalUsersCount: action.count
             };
-            case SET_IS_FETCHING:
+        case SET_IS_FETCHING:
             return {
                 ...state,
                 isFetching: action.isFetching
             };
         default:
             return state;
+    }
+};
+
+export const /*getUsersThunkCreator*/getUsers = (currentPage, pageSize) => {
+    return (dispatch) => {
+        dispatch(setIsFetching(true));
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+            dispatch(setIsFetching(false));
+        });
+    }
+};
+
+export const follow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingInProgress(true, userId));
+        usersAPI.follow(userId)
+            .then(response => {
+                if(response.data.resultCode === 0){
+                    dispatch(followSuccess(userId))
+                }
+                dispatch(toggleFollowingInProgress(false, userId));
+            });
+    }
+};
+
+export const unfollow = (userId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowingInProgress(true, userId));
+        usersAPI.unfollow(userId)
+            .then(response => {
+                if(response.data.resultCode === 0){
+                    dispatch(unfollowSuccess(userId))
+                }
+                dispatch(toggleFollowingInProgress(false, userId));
+            });
     }
 };
 
