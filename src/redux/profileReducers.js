@@ -1,3 +1,5 @@
+import {usersAPI} from "../api/api";
+
 const ADD_POST = 'SN/PROFILE/NEW_POST/ADD_POST';
 export const addPostAC = (postText) => (
     {type: ADD_POST, text: postText}
@@ -49,6 +51,15 @@ const profileReducer = (state = initState, action) => {
             return {...state, profile: action.profile};
         default:
             return state;
+    }
+};
+
+export const setProfile = (userId) => {
+    return (dispatch) => {
+        usersAPI.profile(userId)
+            .then(data => {
+                dispatch(setUserProfile(data));
+            });
     }
 };
 

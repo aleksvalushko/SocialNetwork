@@ -11,12 +11,15 @@ export const usersAPI = {
     follow(userId){
         return axios.post(`follow/${userId}`)
     },
-    authMe(){
-        return axios.get('auth/me')
-            .then(response => response.data);
-    },
     profile(userId){
         return axios.get(`profile/` + userId)
             .then(response => response.data)
+    }
+};
+
+export const authAPI = {
+    authMe(){
+        return axios.get('auth/me')
+            .then(response => response.data);
     }
 };
