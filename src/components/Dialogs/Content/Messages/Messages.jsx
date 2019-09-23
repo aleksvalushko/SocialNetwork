@@ -2,6 +2,7 @@ import React from 'react';
 import mod from './Messages.module.sass';
 import Message from './Message/Message';
 import PropTypes from 'prop-types';
+import {Redirect} from "react-router-dom";
 
 const Messages = (props) => {
 
@@ -19,6 +20,8 @@ const Messages = (props) => {
         let text = newTextMessage.current.value;
         props.updateNewMessage(text);
     };
+
+    if(!props.isAuth) return <Redirect to='Login'/>
 
     return (
         <div className={mod.messages}>

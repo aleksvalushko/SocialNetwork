@@ -5,13 +5,13 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
-import profileReducer from "./redux/profileReducers";
-import dialogsReducer from "./redux/dialogsReducers";
+import profileReducer from "./redux/profileReducer";
+import dialogsReducer from "./redux/dialogsReducer";
 import friendsReducer from "./redux/friendsReducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
-import usersReducer from "./redux/usersReducers";
-import authReducer from "./redux/authReducers";
+import usersReducer from "./redux/usersReducer";
+import authReducer from "./redux/authReducer";
 import loginReducer from "./redux/loginReducer";
 import thunkMiddleware from "redux-thunk";
 

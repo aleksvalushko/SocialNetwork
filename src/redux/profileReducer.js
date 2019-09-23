@@ -54,13 +54,11 @@ const profileReducer = (state = initState, action) => {
     }
 };
 
-export const setProfile = (userId) => {
-    return (dispatch) => {
-        usersAPI.profile(userId)
-            .then(data => {
-                dispatch(setUserProfile(data));
-            });
-    }
+export const setProfile = (userId) => (dispatch) => {
+    usersAPI.profile(userId)
+        .then(data => {
+            dispatch(setUserProfile(data));
+        });
 };
 
 export default profileReducer;

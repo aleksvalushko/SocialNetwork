@@ -38,16 +38,14 @@ const authReducer = (state = initState, action) => {
     }
 };
 
-export const headerAuthMe = () => {
-    return (dispatch) => {
-        authAPI.authMe()
-            .then(data => {
-                if (data.resultCode === 0) {
-                    let {id, email, login} = data.data;
-                    dispatch(setAuthUserData(id, email, login));
-                }
-            });
-    };
+export const headerAuthMe = () => (dispatch) => {
+    authAPI.authMe()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let {id, email, login} = data.data;
+                dispatch(setAuthUserData(id, email, login));
+            }
+        });
 }
 
 /*export const headerAuthMe = (dispatch) => {

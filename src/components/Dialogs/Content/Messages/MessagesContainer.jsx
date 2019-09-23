@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducers";
+import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducer";
 import Messages from "./Messages";
 import {connect} from 'react-redux'
 
@@ -22,7 +22,8 @@ import {connect} from 'react-redux'
 const mapStateToProps = (state) => {
     return{
         messages: state.dialogs.messages,
-        newMessageText: state.dialogs.newMessageText
+        newMessageText: state.dialogs.newMessageText,
+        isAuth: state.auth.isAuth
     }
 };
 const mapDispatchToProps = (dispatch) => {

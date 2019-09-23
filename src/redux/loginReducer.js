@@ -1,5 +1,5 @@
 import axios from './../dal/axiosInstance';
-import {setIsAuth} from "./authReducers";
+import {setIsAuth} from "./authReducer";
 
 const SET_STATUS = 'SN/LOGIN/STATUS';
 export const setStatus = (status) => (

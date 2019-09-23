@@ -1,4 +1,4 @@
-import profileReducer from "../redux/profileReducers";
+import profileReducer from "../redux/profileReducer";
 
 let store = {
     _state: {

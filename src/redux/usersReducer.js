@@ -158,7 +158,7 @@ export const follow = (userId) => {
         dispatch(toggleFollowingInProgress(true, userId));
         usersAPI.follow(userId)
             .then(response => {
-                if(response.data.resultCode === 0){
+                if (response.data.resultCode === 0) {
                     dispatch(followSuccess(userId))
                 }
                 dispatch(toggleFollowingInProgress(false, userId));
@@ -166,17 +166,15 @@ export const follow = (userId) => {
     }
 };
 
-export const unfollow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true, userId));
-        usersAPI.unfollow(userId)
-            .then(response => {
-                if(response.data.resultCode === 0){
-                    dispatch(unfollowSuccess(userId))
-                }
-                dispatch(toggleFollowingInProgress(false, userId));
-            });
-    }
+export const unfollow = (userId) => (dispatch) => {
+    dispatch(toggleFollowingInProgress(true, userId));
+    usersAPI.unfollow(userId)
+        .then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(unfollowSuccess(userId))
+            }
+            dispatch(toggleFollowingInProgress(false, userId));
+        });
 };
 
 export default usersReducer;
