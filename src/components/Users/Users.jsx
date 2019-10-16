@@ -2,8 +2,6 @@ import React from 'react';
 import mod from '../Users/Users.module.sass';
 import userPhoto from '../../images/user.svg';
 import {NavLink} from "react-router-dom";
-import axios from './../../dal/axiosInstance';
-import {usersAPI} from "../../api/api";
 
 let Users = (props) => {
 
@@ -17,7 +15,7 @@ let Users = (props) => {
         <div>
             <div className={mod.pageBlock}>{pages.map(p => {
                 return <div className={`${props.currentPage === p && mod.selectedPage} ${mod.page}`}
-                            onClick={(e) => {
+                            onClick={() => {
                                 props.onPagesChange(p)
                             }}>{p}</div>
             })}</div>

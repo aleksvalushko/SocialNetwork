@@ -4,10 +4,12 @@ const ADD_POST = 'SN/PROFILE/NEW_POST/ADD_POST';
 export const addPostAC = (postText) => (
     {type: ADD_POST, text: postText}
 );
+
 const UPDATE_POST = 'SN/PROFILE/NEW_POST/UPDATE_POST';
 export const updatePostAC = (newText) => (
     {type: UPDATE_POST, text: newText}
 );
+
 const SET_USER_PROFILE = 'SN/PROFILE/SET_USER_PROFILE';
 export const setUserProfile = (profile) => (
     {type: SET_USER_PROFILE, profile}
@@ -30,7 +32,13 @@ let initState = {
             likes: 9
         }],
     newTextPost: '',
-    profile: null
+    profile: {
+        userId: '',
+        photos: {
+            small: '',
+            large: ''
+        }
+    }
 };
 
 const profileReducer = (state = initState, action) => {
@@ -42,11 +50,13 @@ const profileReducer = (state = initState, action) => {
             };
             // state.profile.posts.unshift(newPost);
             // state.newTextPost = '';
-            return {...state, posts: [newPost, ...state.posts], newTextPost: ''};
+            return {...state,
+                posts: [newPost, ...state.posts], newTextPost: ''};
         case UPDATE_POST:
             // state.newTextPost = action.text;
             return {...state, newTextPost: action.text};
         case SET_USER_PROFILE:
+            debugger
             // state.newTextPost = action.text;
             return {...state, profile: action.profile};
         default:
@@ -54,6 +64,7 @@ const profileReducer = (state = initState, action) => {
     }
 };
 
+/*ThunkCreator*/
 export const setProfile = (userId) => (dispatch) => {
     usersAPI.profile(userId)
         .then(data => {

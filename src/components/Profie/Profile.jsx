@@ -3,7 +3,7 @@ import mod from './Profile.module.sass';
 import NewPostContainer from "./NewPost/NewPostContainer";
 import Info from "./Info/Info";
 
-const Profile = (props) => {
+const Profile = ({profile}) => {
 
     return(
         <div className={mod.profile}>
@@ -11,7 +11,7 @@ const Profile = (props) => {
                 <img
                     src="https://nika-web.ru/images/uslugi/socseti.jpg" alt="image"/>
             </div>
-            <Info profile={props.profile}/>
+            <Info profile={profile}/>
             <NewPostContainer />
         </div>
     );

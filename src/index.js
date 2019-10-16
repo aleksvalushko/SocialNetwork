@@ -14,6 +14,7 @@ import usersReducer from "./redux/usersReducer";
 import authReducer from "./redux/authReducer";
 import loginReducer from "./redux/loginReducer";
 import thunkMiddleware from "redux-thunk";
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 let reducers = combineReducers({
     profile: profileReducer,
@@ -24,7 +25,7 @@ let reducers = combineReducers({
     login: loginReducer
 });
 
-let store = createStore(reducers, applyMiddleware(thunkMiddleware));
+let store = createStore(reducers, composeWithDevTools(applyMiddleware(thunkMiddleware)));
 
 /*
 store.subscribe(() => {

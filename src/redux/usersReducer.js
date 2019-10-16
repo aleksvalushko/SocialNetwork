@@ -54,6 +54,11 @@ export const toggleFollowingInProgress = (isFetching, userId) => (
     {type: TOGGLE_FOLLOWING_IN_PROGRESS, isFetching, userId}
 );
 
+const SET_CURRENT_USERID = 'SN/USERS/SET_CURRENT_USERID';
+export const setCurrentUserID = (id) => (
+    {type: SET_CURRENT_USERID, id}
+);
+
 let initState = {
     users: [
         /*{
@@ -85,7 +90,8 @@ let initState = {
     currentPage: 1,
     totalUsersCount: 0,
     isFetching: true,
-    followingInProgress: []
+    followingInProgress: [],
+    currentUserId: null
 };
 
 const usersReducer = (state = initState, action) => {
@@ -115,7 +121,7 @@ const usersReducer = (state = initState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             };
         case SET_USERS:
             return {
@@ -137,11 +143,19 @@ const usersReducer = (state = initState, action) => {
                 ...state,
                 isFetching: action.isFetching
             };
+        case SET_CURRENT_USERID:
+            return {
+                ...state,
+                currentUserId: action.id
+            };
+
         default:
             return state;
     }
 };
 
+
+/*ThunkCreators*/
 export const /*getUsersThunkCreator*/getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(setIsFetching(true));
