@@ -1,5 +1,5 @@
 .header {
-  background: darkblue;
+  background: #1879be;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,7 +9,7 @@
   color: white;
   padding-right: 1vw; }
   .header img {
-    width: 15%;
+    width: 8%;
     margin-left: 2%; }
   .header a {
     color: white;

@@ -18,7 +18,7 @@ const App = () => {
     let dialogs = state.dialogs;
     let friends = state.friends;
     let dispatch = store.dispatch;*/
-
+debugger
     return (
         <div className="appWrapper">
             <HeaderContainer />
