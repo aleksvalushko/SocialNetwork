@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducer";
 import Messages from "./Messages";
 import {connect} from 'react-redux'
+import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
 
 /*const MessagesContainer = ({dialogs, store}) => {
 
@@ -37,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
+const MessagesContainer = withAuthRedirect(connect(mapStateToProps, mapDispatchToProps)(Messages)); //один из вариантов оборачивания компонент контейнерными
 
 export default MessagesContainer;
 

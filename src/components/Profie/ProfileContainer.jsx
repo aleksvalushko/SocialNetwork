@@ -4,6 +4,7 @@ import Profile from "./Profile";
 import {connect} from 'react-redux';
 import {Redirect, withRouter} from "react-router-dom";
 import {setCurrentUserID} from "../../redux/usersReducer";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
 
@@ -32,24 +33,23 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.isAuth) return <Redirect to='Login'/>;
-
         return (
             <Profile {...this.props} profile={this.props.profile}/>
         );
     };
 }
 
+let WithProfileRedirectComponent = withAuthRedirect(ProfileContainer);
+
 let mapStateToProps = (state) => {
 
     return {
         profile: state.profile.profile,
-        isAuth: state.auth.isAuth,
         userId: state.auth.userId,
         currentUserId: state.users.currentUserId
     }
 };
 
-let WithUrlContainerComponent = withRouter(ProfileContainer);
+let WithUrlContainerComponent = withRouter(WithProfileRedirectComponent);
 
-export default connect(mapStateToProps, {setProfile, setCurrentUserID})(WithUrlContainerComponent);
+export default connect(mapStateToProps, {setProfile, setCurrentUserID})(WithUrlContainerComponent);  //один из вариантов оборачивания компонент контейнерными

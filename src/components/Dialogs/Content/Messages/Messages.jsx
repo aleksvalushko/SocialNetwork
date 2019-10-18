@@ -21,8 +21,6 @@ const Messages = (props) => {
         props.updateNewMessage(text);
     };
 
-    if(!props.isAuth) return <Redirect to='Login'/>
-
     return (
         <div className={mod.messages}>
             {message}
@@ -31,6 +29,8 @@ const Messages = (props) => {
         </div>
     );
 };
+
+
 
 export default Messages;
 
