@@ -8,9 +8,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 class ProfileContainer extends React.Component {
-
     componentDidMount() {
-        debugger
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.userId;
@@ -23,7 +21,6 @@ class ProfileContainer extends React.Component {
     };
 
     componentDidUpdate(prevProps) {
-        debugger
         if(this.props.match.params.userId !== prevProps.match.params.userId){
             let userId = this.props.match.params.userId;
             if (!userId) {

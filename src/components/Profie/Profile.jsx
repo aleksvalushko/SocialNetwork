@@ -6,10 +6,10 @@ import Info from "./Info/Info";
 const Profile = ({profile}) => {
     return(
         <div className={mod.profile}>
-            <div className={mod.image}>
+           {/* <div className={mod.image}>
                 <img
                     src="https://nika-web.ru/images/uslugi/socseti.jpg" alt="image"/>
-            </div>
+            </div>*/}
             <Info profile={profile}/>
             <NewPostContainer />
         </div>

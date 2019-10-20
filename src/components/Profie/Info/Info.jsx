@@ -2,6 +2,7 @@ import React from 'react';
 import mod from './Info.module.sass';
 import PropTypes from 'prop-types';
 import Preloader from "../../../common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 const Info = ({profile}) => {
 
@@ -14,7 +15,9 @@ const Info = ({profile}) => {
             <div className={mod.profileAvatar}>
                 <img src={profile.photos.large} alt="alberto"/>
             </div>
-            <div className={mod.about}>
+            <div className={mod.name}>{profile.fullName}</div>
+            <ProfileStatus status='Hello'/>
+            {/*<div className={mod.about}>
                 <div className={mod.name}>{profile.fullName}</div>
                 <div className={mod.informations}>
                     <div className={mod.information}>Date of birth: {profile.birthday}</div>
@@ -22,7 +25,7 @@ const Info = ({profile}) => {
                     <div className={mod.information}>Education: {profile.education}</div>
                     <div className={mod.information}>Web Site: <a href="#">{profile.site}</a></div>
                 </div>
-            </div>
+            </div>*/}
         </div>
     );
 };
