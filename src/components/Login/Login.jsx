@@ -5,7 +5,6 @@ import {Redirect} from "react-router-dom";
 
 
 export const Login = ({status, login, message, isAuth, userId}) => {
-debugger
     if(isAuth){
         return <Redirect to={`/Profile/${userId}`}/>
     }

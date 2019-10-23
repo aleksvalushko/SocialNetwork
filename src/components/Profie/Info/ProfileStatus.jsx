@@ -1,28 +1,43 @@
 import React from 'react';
 import mod from './Info.module.sass';
 
-class ProfileStatus extends React.Component{
+class ProfileStatus extends React.Component {
 
     state = {
-      editMode: false
+        editMode: false,
+        status: this.props.status
     };
 
     activateEditMode = () => {
-      this.setState({
-          editMode: true
-      })
-    };
-
-    deactivateEditMode(){
         this.setState({
-            editMode: false
+            editMode: true
         })
     };
 
+    deactivateEditMode = () => {
+        this.setState({
+            editMode: false
+        });
+        this.props.updateStatus(this.state.status);
+    };
+
+    onStatusChange = (e) => {
+        this.setState({
+            status: e.currentTarget.value
+        });
+    };
+
+   /* onPressEnter = (e) => {
+      if(e.key === 'Enter'){
+          this.onStatusChange(e);
+      }
+    };*/
+
     render() {
         return <div>
-            {!this.state.editMode && <div onDoubleClick={this.activateEditMode}>{this.props.status}</div>}
-            {this.state.editMode && <input autoFocus={true} onBlur={this.deactivateEditMode.bind(this)} value={this.props.status}/>}
+            {!this.state.editMode && <div onDoubleClick={this.activateEditMode}>{this.props.status || 'No status'}</div>}
+            {this.state.editMode &&
+            <input onChange={this.onStatusChange} {/*onKeyPress={this.onPressEnter}*/} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status}/>}
         </div>
     };
 };

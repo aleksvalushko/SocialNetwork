@@ -4,19 +4,19 @@ import PropTypes from 'prop-types';
 import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus";
 
-const Info = ({profile}) => {
+const Info = (props) => {
 
-    if (!profile) {
+    if (!props.profile) {
         return <Preloader />
     }
 
     return (
         <div className={mod.me}>
             <div className={mod.profileAvatar}>
-                <img src={profile.photos.large} alt="alberto"/>
+                <img src={props.profile.photos.large} alt="alberto"/>
             </div>
-            <div className={mod.name}>{profile.fullName}</div>
-            <ProfileStatus status='Hello'/>
+            <div className={mod.name}>{props.profile.fullName}</div>
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
             {/*<div className={mod.about}>
                 <div className={mod.name}>{profile.fullName}</div>
                 <div className={mod.informations}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {setProfile} from "../../redux/profileReducer";
+import {getStatus, setProfile, updateStatus} from "../../redux/profileReducer";
 import Profile from "./Profile";
 import {connect} from 'react-redux';
 import {Redirect, withRouter} from "react-router-dom";
@@ -14,6 +14,7 @@ class ProfileContainer extends React.Component {
             userId = this.props.userId;
         }
         this.props.setProfile(userId);
+        this.props.getStatus(userId);
         /*usersAPI.profile(userId)
             .then(data => {
                 this.props.setUserProfile(data);
@@ -27,12 +28,13 @@ class ProfileContainer extends React.Component {
                 userId = this.props.userId;
             }
             this.props.setProfile(userId);
+            this.props.getStatus(userId);
         }
     }
 
     render() {
         return (
-            <Profile {...this.props} profile={this.props.profile}/>
+            <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus}/>
         );
     };
 }
@@ -40,11 +42,11 @@ class ProfileContainer extends React.Component {
 
 
 let mapStateToProps = (state) => {
-
     return {
         profile: state.profile.profile,
         userId: state.auth.userId,
-        currentUserId: state.users.currentUserId
+        currentUserId: state.users.currentUserId,
+        status: state.profile.status
     }
 };
 /*let WithProfileRedirectComponent = withAuthRedirect(ProfileContainer);
@@ -52,7 +54,7 @@ let WithUrlContainerComponent = withRouter(WithProfileRedirectComponent);
 connect(mapStateToProps, {setProfile, setCurrentUserID})(WithUrlContainerComponent);  //один из вариантов оборачивания компонент контейнерными*/
 
 export default compose(
-    connect(mapStateToProps, {setProfile, setCurrentUserID}),
+    connect(mapStateToProps, {setProfile, setCurrentUserID, getStatus, updateStatus}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer);
