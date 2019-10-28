@@ -2,21 +2,15 @@ import React from 'react';
 import Post from './Post/Post';
 import mod from './NewPost.module.sass';
 import PropTypes from 'prop-types';
+import {Field, reduxForm} from "redux-form";
 
 const NewPost = (props) => {
 
     let posts = props.posts;
     let post = posts.map(el => <Post post={el} likesCount={el}/>);
 
-    let newPostText = React.createRef();
-
-    let addNewPost = () => {
-        props.addPost();
-    };
-
-    let updateNewPost = () => {
-        let text = newPostText.current.value;
-        props.updatePost(text);
+    let addNewPost = (values) => {
+        props.addNewPost(values.newPostText);
     };
 
     /*let addNewPost = () => {
@@ -33,19 +27,32 @@ const NewPost = (props) => {
             <div className={mod.newPost}>
                 <div className={mod.headline}>My Posts</div>
                 <div className={mod.mainPost}>
-                    <div className={mod.input}>
-                        <textarea placeholder="your news..." onChange={updateNewPost}
-                                  ref={newPostText} value={props.newTextPost}></textarea>
-                    </div>
-                    <div className={mod.button}>
-                        <button className={mod.buttonSignature} onClick={addNewPost}>Add</button>
-                    </div>
+                    <AddPostReduxForm onSubmit={addNewPost} />
                 </div>
             </div>
             {post}
         </div>
     );
 };
+
+const AddPostForm = (props) => {
+    return(
+        <form onSubmit={props.handleSubmit}>
+            <div className={mod.input}>
+                <Field placeholder="your news..." component={'textarea'} name={'newPostText'} />
+                {/*<textarea placeholder="your news..." onChange={updateNewPost}
+                                  ref={newPostText} value={props.newTextPost}></textarea>*/}
+            </div>
+            <div className={mod.button}>
+                <button className={mod.buttonSignature}>Add</button>
+            </div>
+        </form>
+    )
+};
+
+const AddPostReduxForm = reduxForm({
+  form: 'newPost'
+})(AddPostForm);
 
 export default NewPost;
 

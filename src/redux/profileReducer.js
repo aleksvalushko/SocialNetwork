@@ -1,13 +1,8 @@
 import {profileAPI} from "../api/api";
 
 const ADD_POST = 'SN/PROFILE/NEW_POST/ADD_POST';
-export const addPostAC = (postText) => (
-    {type: ADD_POST, text: postText}
-);
-
-const UPDATE_POST = 'SN/PROFILE/NEW_POST/UPDATE_POST';
-export const updatePostAC = (newText) => (
-    {type: UPDATE_POST, text: newText}
+export const addPost = (newPostText) => (
+    {type: ADD_POST, newPostText}
 );
 
 const SET_USER_PROFILE = 'SN/PROFILE/SET_USER_PROFILE';
@@ -36,7 +31,6 @@ let initState = {
             text: 'It is my first post!',
             likes: 9
         }],
-    newTextPost: '',
     profile: null,
     status: ''
 };
@@ -45,18 +39,15 @@ const profileReducer = (state = initState, action) => {
     switch (action.type) {
         case ADD_POST:
             let newPost = {
-                text: state.newTextPost,
+                text: action.newPostText,
                 likes: 0
             };
             // state.profile.posts.unshift(newPost);
             // state.newTextPost = '';
             return {
                 ...state,
-                posts: [newPost, ...state.posts], newTextPost: ''
+                posts: [newPost, ...state.posts]
             };
-        case UPDATE_POST:
-            // state.newTextPost = action.text;
-            return {...state, newTextPost: action.text};
         case SET_USER_PROFILE:
             // state.newTextPost = action.text;
             return {...state, profile: action.profile};

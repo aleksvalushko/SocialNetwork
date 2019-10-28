@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import {addMessageAC, updateMessageAC} from "../../../../redux/dialogsReducer";
+import {addMessageAC} from "../../../../redux/dialogsReducer";
 import Messages from "./Messages";
 import {connect} from 'react-redux'
 import {withAuthRedirect} from "../../../../hoc/withAuthRedirect";
@@ -30,11 +29,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
     return{
-        addNewMessage: () => {
-            dispatch(addMessageAC());
-        },
-        updateNewMessage: (text) => {
-            dispatch(updateMessageAC(text));
+        addNewMessage: (newMessageText) => {
+            dispatch(addMessageAC(newMessageText));
         }
     }
 };
