@@ -3,6 +3,8 @@ import Post from './Post/Post';
 import mod from './NewPost.module.sass';
 import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
+import {maxLength30, required} from "../../../helpers/Validators";
+import {Textarea} from "../../Forms/FormsControl";
 
 const NewPost = (props) => {
 
@@ -39,7 +41,8 @@ const AddPostForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={mod.input}>
-                <Field placeholder="your news..." component={'textarea'} name={'newPostText'} />
+                <Field placeholder="your news..." component={Textarea} name={'newPostText'}
+                validate={[required, maxLength30]}/>
                 {/*<textarea placeholder="your news..." onChange={updateNewPost}
                                   ref={newPostText} value={props.newTextPost}></textarea>*/}
             </div>

@@ -57,6 +57,8 @@ export default connect(mapStateToProps, {login})(Login);*/
 
 import React from 'react';
 import {Field, reduxForm} from "redux-form";
+import {maxLength20, required} from "../../helpers/Validators";
+import {Input} from "../Forms/FormsControl";
 
 const Login = (props) => {
 
@@ -75,8 +77,10 @@ const Login = (props) => {
 const LoginForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
-            <div><Field placeholder={'Login'} name={'login'} component={'input'} /></div>
-            <div><Field placeholder={'Password'} name={'password'} component={'input'} /></div>
+            <div><Field placeholder={'Login'} name={'login'} component={Input}
+                        validate={[required, maxLength20]} /></div>
+            <div><Field placeholder={'Password'} name={'password'} component={Input}
+                        validate={[required, maxLength20]} /></div>
             <div><Field type={'checkbox'} name={'rememberMe'} component={'input'} />remember me</div>
             <button>Login</button>
         </form>

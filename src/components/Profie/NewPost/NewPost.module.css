@@ -7,11 +7,9 @@
   font-weight: 500;
   padding-bottom: 2%; }
 
-.input {
-  background: aliceblue; }
-  .input textarea {
-    width: 47vw;
-    height: 7vw; }
+.input textarea {
+  width: 48vw;
+  height: 8vw; }
 
 .button {
   text-align: end; }

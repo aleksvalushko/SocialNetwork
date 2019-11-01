@@ -4,6 +4,8 @@ import Message from './Message/Message';
 import PropTypes from 'prop-types';
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {maxLength50, required} from "../../../../helpers/Validators";
+import {Textarea} from "../../../Forms/FormsControl";
 
 const Messages = (props) => {
 
@@ -25,7 +27,8 @@ const Messages = (props) => {
 const MessagesForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
-            <Field placeholder='...your message' component='textarea' name='newMessageText' />
+            <Field placeholder='...your message' component={Textarea} name='newMessageText'
+                   validate={[required, maxLength50]}/>
             {/*<textarea onChange={updateNewMessage} ref={newTextMessage} value={props.newMessageText}></textarea>*/}
             <button>Add</button>
         </form>
