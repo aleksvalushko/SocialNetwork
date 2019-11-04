@@ -3,12 +3,14 @@ import mod from './Header.module.sass';
 import {NavLink} from "react-router-dom";
 /*import logo from '../../images/logoMSN2.png';*/
 
-const Header = ({isAuth, login}) => {
+const Header = ({isAuth, login, logout}) => {
 
     return(
         <header className={mod.header}>
             <img src='https://image.flaticon.com/icons/svg/254/254018.svg' alt="icon"/>
-            {isAuth ? login : <div className={mod.login}><NavLink to = "/Login">Login</NavLink></div>}
+            {isAuth
+                ? <div className={mod.loginLogout}><div>{login}</div><button onClick={logout}>Logout</button></div>
+                : <div className={mod.login}><NavLink to = "/Login">Login</NavLink></div>}
         </header>
     );
 };

@@ -16,4 +16,12 @@
     text-decoration: none;
     font-size: 1.5vw; }
 
+.loginLogout {
+  text-align: center; }
+  .loginLogout button {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid black;
+    font-size: 1.2vw; }
+
 /*# sourceMappingURL=Header.module.css.map */

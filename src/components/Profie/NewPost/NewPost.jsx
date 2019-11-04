@@ -41,7 +41,7 @@ const AddPostForm = (props) => {
     return(
         <form onSubmit={props.handleSubmit}>
             <div className={mod.input}>
-                <Field placeholder="your news..." component={Textarea} name={'newPostText'}
+                <Field placeholder="your news..." component={Textarea} name='newPostText'
                 validate={[required, maxLength30]}/>
                 {/*<textarea placeholder="your news..." onChange={updateNewPost}
                                   ref={newPostText} value={props.newTextPost}></textarea>*/}

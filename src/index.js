@@ -12,7 +12,7 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import usersReducer from "./redux/usersReducer";
 import authReducer from "./redux/authReducer";
-import loginReducer from "./redux/loginReducer";
+// import loginReducer from "./redux/loginReducer";
 import thunkMiddleware from "redux-thunk";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { reducer as formReducer } from 'redux-form';
