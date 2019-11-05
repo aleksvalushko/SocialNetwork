@@ -12,6 +12,9 @@ class ProfileContainer extends React.Component {
         let userId = this.props.match.params.userId;
         if (!userId) {
             userId = this.props.userId;
+            /*if(!userId){
+                return this.props.history.path('/Login');                         //Программный Redirect
+            }*/
         }
         this.props.setProfile(userId);
         this.props.getStatus(userId);
