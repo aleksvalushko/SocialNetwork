@@ -156,10 +156,11 @@ const usersReducer = (state = initState, action) => {
 
 
 /*ThunkCreators*/
-export const /*getUsersThunkCreator*/getUsers = (currentPage, pageSize) => {
+export const /*getUsersThunkCreator*/requestUsers = (page, pageSize) => {
     return (dispatch) => {
         dispatch(setIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
+        dispatch(setCurrentPage(page));
+        usersAPI.getUsers(page, pageSize).then(data => {
             dispatch(setUsers(data.items));
             dispatch(setTotalUsersCount(data.totalCount));
             dispatch(setIsFetching(false));
