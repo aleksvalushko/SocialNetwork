@@ -80,6 +80,8 @@ class UsersContainer extends React.Component {
     }
 };*/
 
+//используем selector в mapStateToProps
+
 const mapStateToProps = (state) => {
     return {
         users: getUsers(state),

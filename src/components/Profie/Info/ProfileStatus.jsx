@@ -1,5 +1,4 @@
 import React from 'react';
-import mod from './Info.module.sass';
 
 class ProfileStatus extends React.Component {
 
