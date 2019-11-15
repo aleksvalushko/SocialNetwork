@@ -13,6 +13,10 @@ const SET_STATUS = 'SN/PROFILE/SET_STATUS';
 export const setStatus = (status) => (
     {type: SET_STATUS, status}
 );
+const DELETE_POST = 'SN/PROFILE/DELETE_POST';
+export const deletePost = (postId) => (
+    {type: DELETE_POST, postId}
+);
 
 
 let initState = {
@@ -24,10 +28,12 @@ let initState = {
     site: "https://myReactSite.com",
     posts: [
         {
+            id: 1,
             text: 'Why you are so serious?',
             likes: 15
         },
         {
+            id: 2,
             text: 'It is my first post!',
             likes: 9
         }],
@@ -53,6 +59,8 @@ const profileReducer = (state = initState, action) => {
             return {...state, profile: action.profile};
         case SET_STATUS:
             return {...state, status: action.status};
+        case DELETE_POST:
+            return {...state, posts: state.posts.filter(p => p.id != action.postId)};
         default:
             return state;
     }
@@ -75,7 +83,7 @@ export const getStatus = (userId) => (dispatch) => {
 export const updateStatus = (status) => (dispatch) => {
     profileAPI.updateStatus(status)
         .then(data => {
-            if(data.resultCode === 0) {
+            if (data.resultCode === 0) {
                 dispatch(setStatus(status));
             }
         });

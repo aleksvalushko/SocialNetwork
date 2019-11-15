@@ -90,7 +90,6 @@ const Login = (props) => {
     if(props.isAuth){
         return <Redirect to='/Profile'/>
     }
-    debugger
     return(
         <div>
             <h1>Login</h1>

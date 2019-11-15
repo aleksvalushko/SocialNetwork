@@ -23,7 +23,6 @@ class App extends Component {
     };
 
     render() {
-debugger
         if(!this.props.initialized){
             return <Preloader />
         }
