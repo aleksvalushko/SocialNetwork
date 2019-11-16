@@ -1,29 +1,5 @@
-/*const FOLLOW = 'SN/USERS/FOLLOW';
-export const followAC = (userId) => (
-    {type: FOLLOW, userId}
-);
-const UNFOLLOW = 'SN/USERS/UNFOLLOW';
-export const unfollowAC = (userId) => (
-    {type: UNFOLLOW, userId}
-);
-const SET_USERS = 'SN/USERS/SET_USERS';
-export const setUsersAC = (users) => (
-    {type: SET_USERS, users}
-);
-const SET_CURRENT_PAGE = 'SN/USERS/SET_CURRENT_PAGE';
-export const setCurrentPageAC = (currentPage) => (
-    {type: SET_CURRENT_PAGE, currentPage}
-);
-const SET_TOTAL_USERS_COUNT = 'SN/USERS/SET_TOTAL_USERS_COUNT';
-export const setTotalUsersCountAC = (totalCount) => (
-    {type: SET_TOTAL_USERS_COUNT, count: totalCount}
-);
-const SET_IS_FETCHING = 'SN/USERS/SET_IS_FETCHING';
-export const setIsFetchingAC = (isFetching) => (
-    {type: SET_IS_FETCHING, isFetching}
-);*/
-
 import {usersAPI} from "../api/api";
+import {updateFunctionInArray} from "../helpers/objectHelpers";
 
 const FOLLOW = 'SN/USERS/FOLLOW';
 export const followSuccess = (userId) => (
@@ -60,32 +36,7 @@ export const setCurrentUserID = (id) => (
 );
 
 let initState = {
-    users: [
-        /*{
-            id: 1,
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ',
-            followed: false,
-            fullName: 'Masha',
-            status: 'I am the first user',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 2,
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ',
-            followed: true,
-            fullName: 'Nastya',
-            status: 'I am the second user',
-            location: {city: 'Minsk', country: 'Belarus'}
-        },
-        {
-            id: 3,
-            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ',
-            followed: false,
-            fullName: 'Sasha',
-            status: 'I am the third user',
-            location: {city: 'Minsk', country: 'Belarus'}
-        }*/
-    ],
+    users: [],
     pageSize: 40,
     currentPage: 1,
     totalUsersCount: 0,
@@ -99,22 +50,12 @@ const usersReducer = (state = initState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: true}
-                    }
-                    return u;
-                })
+                users: updateFunctionInArray(state.users, action.userId, 'id', {followed: true})
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u => {
-                    if (u.id === action.userId) {
-                        return {...u, followed: false}
-                    }
-                    return u;
-                })
+                users: updateFunctionInArray(state.users, action.userId, 'id', {followed: false})
             };
         case TOGGLE_FOLLOWING_IN_PROGRESS:
             return {
@@ -156,40 +97,34 @@ const usersReducer = (state = initState, action) => {
 
 
 /*ThunkCreators*/
-export const /*getUsersThunkCreator*/requestUsers = (page, pageSize) => {
-    return (dispatch) => {
+export const requestUsers = (page, pageSize) => {
+    return async (dispatch) => {
         dispatch(setIsFetching(true));
         dispatch(setCurrentPage(page));
-        usersAPI.getUsers(page, pageSize).then(data => {
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
-            dispatch(setIsFetching(false));
-        });
+        let data = await usersAPI.getUsers(page, pageSize);
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+        dispatch(setIsFetching(false));
     }
+};
+
+const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
+    dispatch(toggleFollowingInProgress(true, userId));
+    let response = await apiMethod(userId);
+    if (response.data.resultCode === 0) {
+        dispatch(actionCreator(userId))
+    }
+    dispatch(toggleFollowingInProgress(false, userId));
 };
 
 export const follow = (userId) => {
-    return (dispatch) => {
-        dispatch(toggleFollowingInProgress(true, userId));
-        usersAPI.follow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(followSuccess(userId))
-                }
-                dispatch(toggleFollowingInProgress(false, userId));
-            });
+    return async (dispatch) => {
+        await followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess);
     }
 };
 
-export const unfollow = (userId) => (dispatch) => {
-    dispatch(toggleFollowingInProgress(true, userId));
-    usersAPI.unfollow(userId)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(unfollowSuccess(userId))
-            }
-            dispatch(toggleFollowingInProgress(false, userId));
-        });
+export const unfollow = (userId) => async (dispatch) => {
+    await followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess);
 };
 
 export default usersReducer;

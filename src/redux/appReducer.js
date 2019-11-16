@@ -21,11 +21,10 @@ const appReducer = (state = initState, action) => {
     }
 };
 
-export const initializingApp = () => (dispatch) => {
+export const initializingApp = () => async (dispatch) => {
     let promise = dispatch(getAuthMeData());
-    Promise.all([promise]).then(() => {
-        dispatch(successInitializing());
-    })
+    await Promise.all([promise]);
+    dispatch(successInitializing());
 };
 
 export default appReducer;

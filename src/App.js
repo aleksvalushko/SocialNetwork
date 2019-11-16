@@ -27,27 +27,18 @@ class App extends Component {
             return <Preloader />
         }
 
-        /*let profile = state.profile;
-        let dialogs = state.dialogs;
-        let friends = state.friends;
-        let dispatch = store.dispatch;*/
         return (
             <div className="appWrapper">
                 <HeaderContainer/>
-                <Navigation
-                    // friends={friends}
-                />
+                <Navigation />
                 <div className="appWrapperContent">
                     <Route path='/Login' render={() => <Login/>}/>
                     <Route path='/Profile/:userId?'
                            render={() => <ProfileContainer // знак ? после :userId - параметр :userId не обязателен
-                               // store={store} profile={profile}
                            />}/>
                     <Route path='/Dialogs' render={() => <Dialogs
-                        // store={store} dialogs={dialogs}
                     />}/>
                     <Route path='/Friends' render={() => <FriendsContainer
-                        // friends={friends}
                     />}/>
                     <Route path='/Users' render={() => <UsersContainer/>}/>
                     <Route path='/News' render={() => <News/>}/>

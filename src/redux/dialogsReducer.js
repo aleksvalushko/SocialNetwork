@@ -26,8 +26,6 @@ const dialogsReducer = (state = initState, action) => {
                 name: 'Masha',
                 avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ'
             };
-            /*state.dialogs.messages.unshift(newMessage);
-            state.newMessageText = '';*/
             return {...state, messages: [newMessage, ...state.messages]};
         default:
             return state;

@@ -1,7 +1,6 @@
 import React from 'react';
 import mod from './Header.module.sass';
 import {NavLink} from "react-router-dom";
-/*import logo from '../../images/logoMSN2.png';*/
 
 const Header = ({isAuth, login, logout}) => {
 

@@ -48,45 +48,36 @@ const profileReducer = (state = initState, action) => {
                 text: action.newPostText,
                 likes: 0
             };
-            // state.profile.posts.unshift(newPost);
-            // state.newTextPost = '';
             return {
                 ...state,
                 posts: [newPost, ...state.posts]
             };
         case SET_USER_PROFILE:
-            // state.newTextPost = action.text;
             return {...state, profile: action.profile};
         case SET_STATUS:
             return {...state, status: action.status};
         case DELETE_POST:
-            return {...state, posts: state.posts.filter(p => p.id != action.postId)};
+            return {...state, posts: state.posts.filter(p => p.id !== action.postId)};
         default:
             return state;
     }
 };
 
 /*ThunkCreator*/
-export const setProfile = (userId) => (dispatch) => {
-    profileAPI.getProfile(userId)
-        .then(data => {
-            dispatch(setUserProfile(data));
-        });
+export const setProfile = (userId) => async (dispatch) => {
+    let data = await profileAPI.getProfile(userId);
+    dispatch(setUserProfile(data));
 };
 
-export const getStatus = (userId) => (dispatch) => {
-    profileAPI.getStatus(userId)
-        .then(data => {
-            dispatch(setStatus(data));
-        });
+export const getStatus = (userId) => async (dispatch) => {
+    let data = await profileAPI.getStatus(userId);
+    dispatch(setStatus(data));
 };
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(data => {
-            if (data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        });
+export const updateStatus = (status) => async (dispatch) => {
+    let data = await profileAPI.updateStatus(status);
+    if (data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
 };
 
 export default profileReducer;

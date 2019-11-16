@@ -2,7 +2,7 @@ import React from 'react';
 import {getStatus, setProfile, updateStatus} from "../../redux/profileReducer";
 import Profile from "./Profile";
 import {connect} from 'react-redux';
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import {setCurrentUserID} from "../../redux/usersReducer";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
@@ -18,10 +18,6 @@ class ProfileContainer extends React.Component {
         }
         this.props.setProfile(userId);
         this.props.getStatus(userId);
-        /*usersAPI.profile(userId)
-            .then(data => {
-                this.props.setUserProfile(data);
-            });*/
     };
 
     componentDidUpdate(prevProps) {
