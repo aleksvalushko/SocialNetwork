@@ -18,7 +18,7 @@ export const setCurrentPage = (currentPage) => (
     {type: SET_CURRENT_PAGE, currentPage}
 );
 const SET_TOTAL_USERS_COUNT = 'SN/USERS/SET_TOTAL_USERS_COUNT';
-export const setTotalUsersCount = (totalCount) => (
+export const setTotalItemsCount = (totalCount) => (
     {type: SET_TOTAL_USERS_COUNT, count: totalCount}
 );
 const SET_IS_FETCHING = 'SN/USERS/SET_IS_FETCHING';
@@ -37,9 +37,9 @@ export const setCurrentUserID = (id) => (
 
 let initState = {
     users: [],
-    pageSize: 40,
+    pageSize: 20,
     currentPage: 1,
-    totalUsersCount: 0,
+    totalItemsCount: 0,
     isFetching: true,
     followingInProgress: [],
     currentUserId: null
@@ -77,7 +77,7 @@ const usersReducer = (state = initState, action) => {
         case SET_TOTAL_USERS_COUNT:
             return {
                 ...state,
-                totalUsersCount: action.count
+                totalItemsCount: action.count
             };
         case SET_IS_FETCHING:
             return {
@@ -103,7 +103,7 @@ export const requestUsers = (page, pageSize) => {
         dispatch(setCurrentPage(page));
         let data = await usersAPI.getUsers(page, pageSize);
         dispatch(setUsers(data.items));
-        dispatch(setTotalUsersCount(data.totalCount));
+        dispatch(setTotalItemsCount(data.totalCount));
         dispatch(setIsFetching(false));
     }
 };

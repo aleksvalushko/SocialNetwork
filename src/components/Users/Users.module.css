@@ -44,13 +44,24 @@
 .pageBlock {
   display: flex;
   font-size: 1.2vw;
-  cursor: pointer; }
+  cursor: pointer;
+  width: 250px; }
 
 .page {
-  margin-right: 1%; }
+  margin-right: 3%; }
 
 .selectedPage {
   font-weight: 700;
   border-bottom: 2px solid #000; }
+
+.usersPaginator {
+  width: 420px;
+  display: flex;
+  justify-content: space-around; }
+  .usersPaginator button {
+    background: transparent;
+    border: none; }
+  .usersPaginator img {
+    width: 10px; }
 
 /*# sourceMappingURL=Users.module.css.map */

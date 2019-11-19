@@ -10,8 +10,8 @@ export const getCurrentPage = (state) => {
     return state.users.currentPage;
 };
 
-export const getTotalUsersCount = (state) => {
-    return state.users.totalUsersCount;
+export const getTotalItemsCount = (state) => {
+    return state.users.totalItemsCount;
 };
 
 export const getIsFetching = (state) => {
