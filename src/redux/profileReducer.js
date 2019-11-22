@@ -17,6 +17,10 @@ const DELETE_POST = 'SN/PROFILE/DELETE_POST';
 export const deletePost = (postId) => (
     {type: DELETE_POST, postId}
 );
+const SAVE_PHOTO_SUCCESS = 'SN/PROFILE/SAVE_PHOTO_SUCCESS';
+export const savePhotoSuccess = (photos) => (
+    {type: SAVE_PHOTO_SUCCESS, photos}
+);
 
 
 let initState = {
@@ -58,6 +62,8 @@ const profileReducer = (state = initState, action) => {
             return {...state, status: action.status};
         case DELETE_POST:
             return {...state, posts: state.posts.filter(p => p.id !== action.postId)};
+        case SAVE_PHOTO_SUCCESS:
+            return {...state, profile: {...state.profile, photos: action.photos}};
         default:
             return state;
     }
@@ -77,6 +83,12 @@ export const updateStatus = (status) => async (dispatch) => {
     let data = await profileAPI.updateStatus(status);
     if (data.resultCode === 0) {
         dispatch(setStatus(status));
+    }
+};
+export const savePhoto = (file) => async (dispatch) => {
+    let data = await profileAPI.saveProfilePhoto(file);
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos));
     }
 };
 

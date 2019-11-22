@@ -3,6 +3,7 @@ import mod from './Info.module.sass';
 import PropTypes from 'prop-types';
 import Preloader from "../../../common/Preloader/Preloader";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
+import avatarDownload from '../../../images/avatarDownload.svg';
 
 const Info = (props) => {
 
@@ -10,10 +11,21 @@ const Info = (props) => {
         return <Preloader />
     }
 
+    const onMainPhotoChange = (e) => {
+        if(e.target.files.length){
+            props.savePhoto(e.target.files[0]);
+        }
+    };
+
     return (
         <div className={mod.me}>
             <div className={mod.profileAvatar}>
                 <img src={props.profile.photos.large} alt="alberto"/>
+                {props.isOwner &&
+                <label className={mod.profilePhotoLoadButton}>
+                    <input type='file' onChange={onMainPhotoChange}/>
+                    <img src={avatarDownload} alt="avatarDownload"/>
+                </label>}
             </div>
             <div className={mod.name}>{props.profile.fullName}</div>
             <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>

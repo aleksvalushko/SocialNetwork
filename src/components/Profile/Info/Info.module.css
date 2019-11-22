@@ -5,14 +5,20 @@
   margin-top: 5%; }
 
 .profileAvatar {
-  grid-column: 1/2;
-  padding: 15% 0 0 20%; }
+  grid-column: 1/2; }
   .profileAvatar img {
-    width: 80%; }
+    width: 100%; }
 
 .name {
   font-size: 1.5vw;
-  padding-bottom: 5%;
+  padding-left: 5%;
   font-weight: 500; }
+
+.profilePhotoLoadButton img {
+  width: 1.5%;
+  position: absolute;
+  left: 43.5%; }
+.profilePhotoLoadButton input[type='file'] {
+  display: none; }
 
 /*# sourceMappingURL=Info.module.css.map */

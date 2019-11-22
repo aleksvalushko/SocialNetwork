@@ -10,7 +10,11 @@ const Profile = (props) => {
                 <img
                     src="https://nika-web.ru/images/uslugi/socseti.jpg" alt="image"/>
             </div>*/}
-            <Info profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+            <Info savePhoto={props.savePhoto}
+                  profile={props.profile}
+                  status={props.status}
+                  updateStatus={props.updateStatus}
+                  isOwner={props.isOwner}/>
             <NewPostContainer />
         </div>
     );
