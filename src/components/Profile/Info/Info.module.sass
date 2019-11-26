@@ -1,23 +1,30 @@
 .me
-  grid-area: 1 / 1 / 2 / 3
-  display: grid
-  grid-template-columns: 30% 70%
+  display: flex
   margin-top: 5%
+  height: 70vh
 
 .profileAvatar
-  grid-column: 1 / 2
+  width: 32%
   img
     width: 100%
 
+.aboutMe
+  padding-left: 3.5%
+  span
+    font-weight: 500
+
 .name
   font-size: 1.5vw
-  padding-left: 5%
   font-weight: 500
 
 .profilePhotoLoadButton
   img
     width: 1.5%
     position: absolute
-    left: 43.5%
+    left: 50.5%
+    cursor: pointer
   input[type='file']
     display: none
+
+.profileContacts
+  margin-left: 10%

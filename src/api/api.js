@@ -10,11 +10,7 @@ export const usersAPI = {
     },
     follow(userId){
         return axios.post(`follow/${userId}`)
-    }/*,
-    getProfile(userId){
-        console.warn('Absolute method. Please, use profileAPI.');
-        return profileAPI.getProfile(userId);
-    }*/
+    }
 };
 
 export const profileAPI = {
@@ -38,6 +34,10 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+            .then(response => response.data)
+    },
+    saveProfileData(profile){
+        return axios.put(`profile`, profile)
             .then(response => response.data)
     }
 };
