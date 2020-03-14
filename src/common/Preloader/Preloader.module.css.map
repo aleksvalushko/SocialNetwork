@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,UAAU;EACR,QAAQ,EAAE,QAAQ;EAClB,UAAU,EAAE,WAAW;EACvB,MAAM,EAAE,aAAa",
-"sources": ["Preloader.module.sass"],
-"names": [],
-"file": "Preloader.module.css"
-}

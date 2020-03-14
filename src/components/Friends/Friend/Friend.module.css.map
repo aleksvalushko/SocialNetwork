@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,OAAO;EACL,UAAU,EAAE,MAAM;EAClB,MAAM,EAAE,EAAE;EACV,SAAC;IACC,KAAK,EAAE,KAAK;IACZ,SAAS,EAAE,KAAK;IAChB,eAAe,EAAE,IAAI;EACvB,WAAG;IACD,KAAK,EAAE,GAAG;IACV,aAAa,EAAE,GAAG",
-"sources": ["Friend.module.sass"],
-"names": [],
-"file": "Friend.module.css"
-}

@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,SAAS;EACL,WAAW,EAAE,GAAK;EAClB,WAAW,EAAE,cAAc;EAC3B,aAAG;IACC,KAAK,EAAE,GAAG",
-"sources": ["Messages.module.sass"],
-"names": [],
-"file": "Messages.module.css"
-}

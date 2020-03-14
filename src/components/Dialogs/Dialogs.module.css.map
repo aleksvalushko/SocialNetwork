@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,MAAM;EACF,SAAS,EAAE,GAAG;EACd,WAAW,EAAE,GAAG",
-"sources": ["Dialogs.module.sass"],
-"names": [],
-"file": "Dialogs.module.css"
-}
