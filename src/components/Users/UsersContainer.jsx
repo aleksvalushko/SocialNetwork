@@ -19,7 +19,6 @@ import {
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-
         this.props.getUsers(this.props.currentPage, this.props.pageSize);
     };
 
@@ -43,17 +42,6 @@ class UsersContainer extends React.Component {
         </>
     }
 }
-
-/*const mapStateToProps = (state) => {
-    return {
-        users: state.users.users,
-        pageSize: state.users.pageSize,
-        currentPage: state.users.currentPage,
-        totalUsersCount: state.users.totalUsersCount,
-        isFetching: state.users.isFetching,
-        followingInProgress: state.users.followingInProgress
-    }
-};*/
 
 //используем selector в mapStateToProps
 

@@ -1,4 +1,5 @@
 import {profileAPI} from "../api/api";
+import {stopSubmit} from "redux-form";
 
 const ADD_POST = 'SN/PROFILE/NEW_POST/ADD_POST';
 export const addPost = (newPostText) => (
@@ -69,8 +70,8 @@ const profileReducer = (state = initState, action) => {
     }
 };
 
-/*ThunkCreator*/
-export const setProfile = (userId) => async (dispatch) => {
+/*ThunkCreators*/
+export const getUserProfile = (userId) => async (dispatch) => {
     let data = await profileAPI.getProfile(userId);
     dispatch(setUserProfile(data));
 };
@@ -95,7 +96,15 @@ export const saveProfile = (profile) => async (dispatch, getState) => {
     let userId = getState().auth.userId;
     let data = await profileAPI.saveProfileData(profile);
     if (data.resultCode === 0) {
-        dispatch(setProfile(userId));
+        dispatch(getUserProfile(userId));
+    } else {
+        //let contacts = data.messages[0].split('->');
+        //let contact = contacts[1].split(')');
+        //let cont = contact[0];
+        // dispatch(stopSubmit('edit-profile', {'contacts': {cont: data.messages[0]}}));
+        dispatch(stopSubmit('edit-profile', {'contacts': {'facebook': data.messages[0]} }));
+        // {'contacts': {'facebook': data.messages[0]} }
+        return Promise.reject(data.messages[0]);
     }
 };
 

@@ -1,9 +1,9 @@
 const SET_FRIEND = 'SN/FRIENDS/SET_FRIEND';
-export const setFriendsAC = friends => ({type: SET_FRIEND, friends});
+export const setFriendsAC = users => ({type: SET_FRIEND, users});
 
 let initState = {
     users: [
-        {
+        /*{
             id: 1,
             avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ',
             name: 'Ruslan'
@@ -32,7 +32,7 @@ let initState = {
             id: 6,
             avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_8DD1nIUzMTqtW20DOu1IM_FImz8HK-f34YO89SxWMD54nOoaTQ',
             name: 'Dima'
-        }
+        }*/
     ]
 };
 

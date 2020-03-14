@@ -1,12 +1,19 @@
 import React from 'react';
 import mod from "./Info.module.sass";
 import {createFieldForm, Input, Textarea} from "../../Forms/FormsControl";
+import {required} from "../../../helpers/Validators";
+import m from '../../Forms/FormsControl.module.sass';
 
-const ProfileDataForm = ({profile, handleSubmit}) => {
-    return <form  className={mod.aboutMe} onSubmit={handleSubmit}>
+const ProfileDataForm = ({profile, handleSubmit, error}) => {
+    return <form className={mod.aboutMe} onSubmit={handleSubmit}>
         <button>Save</button>
+        {error &&
+        <div className={m.formSummaryError}>
+            {error}
+        </div>
+        }
         <div className={mod.name}>
-            {createFieldForm('Full name', 'fullName', Input, [])}
+            {createFieldForm('Full name', 'fullName', Input, [required])}
         </div>
         <div>
             <span>Looking for a job:</span>
@@ -14,18 +21,18 @@ const ProfileDataForm = ({profile, handleSubmit}) => {
         </div>
         <div>
             <span>My professional skills:</span>
-            {createFieldForm('My professional skills', 'lookingForAJobDescription', Textarea)}
+            {createFieldForm('My professional skills', 'lookingForAJobDescription', Textarea, [required])}
         </div>
         <div>
             <span>Contacts:</span> {Object.keys(profile.contacts).map(key => {
             return <div>
-                {key}: {createFieldForm(key, 'contacts.' + key, Input)}
+                <span>{key}:</span> {createFieldForm(key, 'contacts.' + key, Input)}
             </div>
         })}
         </div>
         <div>
             <span>About me:</span>
-            {createFieldForm('About me', 'aboutMe', Textarea)}
+            {createFieldForm('About me', 'aboutMe', Textarea, [required])}
         </div>
     </form>
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import {getStatus, savePhoto, saveProfile, setProfile, updateStatus} from "../../redux/profileReducer";
+import {getStatus, savePhoto, saveProfile, getUserProfile, updateStatus} from "../../redux/profileReducer";
 import Profile from "./Profile";
 import {connect} from 'react-redux';
 import {withRouter} from "react-router-dom";
@@ -16,7 +16,7 @@ class ProfileContainer extends React.Component {
                 return this.props.history.path('/Login');                         //Программный Redirect
             }*/
         }
-        this.props.setProfile(userId);
+        this.props.getUserProfile(userId);
         this.props.getStatus(userId);
     };
 
@@ -26,7 +26,7 @@ class ProfileContainer extends React.Component {
             if (!userId) {
                 userId = this.props.userId;
             }
-            this.props.setProfile(userId);
+            this.props.getUserProfile(userId);
             this.props.getStatus(userId);
         }
     }
@@ -58,7 +58,7 @@ let WithUrlContainerComponent = withRouter(WithProfileRedirectComponent);
 connect(mapStateToProps, {setProfile, setCurrentUserID})(WithUrlContainerComponent);  //один из вариантов оборачивания компонент контейнерными*/
 
 export default compose(
-    connect(mapStateToProps, {setProfile, setCurrentUserID, getStatus, updateStatus, savePhoto, saveProfile}),
+    connect(mapStateToProps, {getUserProfile, setCurrentUserID, getStatus, updateStatus, savePhoto, saveProfile}),
     withRouter,
     withAuthRedirect
 )(ProfileContainer);
