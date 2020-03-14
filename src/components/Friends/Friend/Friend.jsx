@@ -1,16 +1,16 @@
 import React from 'react';
 import mod from './Friend.module.sass';
 import {NavLink} from "react-router-dom";
-import PropTypes from 'prop-types';
+import userPhoto from "../../../images/user.svg";
 
-const Friend = (friends) => {
+const Friend = ({user}) => {
 
     return (
         <div className={mod.friend}>
             <div className={mod.avatar}>
-                <NavLink to={'/Friends/' + friends.index}>
-                    <img src={friends.avatar} alt="avatar"/>
-                    <div className={mod.name}>{friends.name}</div>
+                <NavLink to={'Profile/' + user.id}>
+                    <img src={user.photos.small != null ? user.photos.small : userPhoto} alt="Avatar"/>
+                    <div className={mod.name}>{user.name}</div>
                 </NavLink>
             </div>
         </div>
@@ -18,9 +18,3 @@ const Friend = (friends) => {
 };
 
 export default Friend;
-
-Friend.propTypes = {
-    index: PropTypes.number,
-    avatar: PropTypes.string,
-    name: PropTypes.string
-};

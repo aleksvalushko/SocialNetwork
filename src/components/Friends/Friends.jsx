@@ -3,18 +3,15 @@ import mod from './Friends.module.sass';
 import Friend from "./Friend/Friend";
 import PropTypes from 'prop-types';
 
-const Friends = (props) => {
+const Friends = ({users}) => {
 
-    let friend = props.friends.users.map( (el,index) => <Friend avatar={el.avatar} name={el.name} index={index+1}/>);
+    let friends = users.map( el => el.followed ? <Friend user={el} /> : '');
 
     return(
         <div className={mod.friends}>
-            {friend}
+            {friends}
         </div>
     );
 };
 
 export default Friends;
-
-Friends.propTypes = {
-};
