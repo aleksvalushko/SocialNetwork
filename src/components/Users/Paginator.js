@@ -28,7 +28,7 @@ let Paginator = ({totalItemsCount, pageSize, currentPage, onPagesChange, portion
                         return <div className={`${currentPage === p && mod.selectedPage} ${mod.page}`}
                                     onClick={() => {
                                         onPagesChange(p)
-                                    }}>{p}</div>
+                                    }} key={p}>{p}</div>
                     })}</div>
             {
                 portionCount > portionNumber &&

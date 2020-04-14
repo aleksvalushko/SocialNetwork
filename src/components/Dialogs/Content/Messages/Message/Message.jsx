@@ -1,6 +1,5 @@
 import React from 'react';
 import mod from './Message.module.sass';
-import PropTypes from 'prop-types';
 
 const Message = (props) => {
 
@@ -17,10 +16,3 @@ const Message = (props) => {
 };
 
 export default Message;
-
-Message.propTypes = {
-    item: PropTypes.number,
-    avatar: PropTypes.string,
-    name: PropTypes.string,
-    message: PropTypes.object
-};

@@ -26,12 +26,6 @@ class ProfileStatus extends React.Component {
         });
     };
 
-   /* onPressEnter = (e) => {
-      if(e.key === 'Enter'){
-          this.onStatusChange(e);
-      }
-    };*/
-
    componentDidUpdate(prevProps, prevState) {
        if(prevProps.status !== this.props.status){
            this.setState({

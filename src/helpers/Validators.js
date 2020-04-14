@@ -10,4 +10,3 @@ export const maxLength = max => value => {
 
 export const maxLength30 = maxLength(30);
 export const maxLength50 = maxLength(50);
-export const maxLength20 = maxLength(20);

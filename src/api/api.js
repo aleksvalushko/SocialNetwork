@@ -3,7 +3,9 @@ import axios from './../dal/axiosInstance';
 export const usersAPI = {
     getUsers(currentPage, pageSize) {
         return axios.get(`users?page=${currentPage}&count=${pageSize}`) //после вопросительного знака цепляются квери(get)-параметры
-            .then(response => response.data);
+            .then(response => {
+                return response.data
+            });
     },
     unfollow(userId) {
         return axios.delete(`follow/${userId}`)

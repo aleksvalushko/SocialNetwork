@@ -1,5 +1,8 @@
 export const getUsers = (state) => {
     return state.users.users;
+}
+export const getFollowedUsers = (state) => {
+    return state.friends.friends;
 };
 
 export const getPageSize = (state) => {

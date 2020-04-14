@@ -50,12 +50,14 @@ const usersReducer = (state = initState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: updateFunctionInArray(state.users, action.userId, 'id', {followed: true})
+                users: updateFunctionInArray(state.users, action.userId,
+                    'id', {followed: true})
             };
         case UNFOLLOW:
             return {
                 ...state,
-                users: updateFunctionInArray(state.users, action.userId, 'id', {followed: false})
+                users: updateFunctionInArray(state.users, action.userId,
+                    'id', {followed: false})
             };
         case TOGGLE_FOLLOWING_IN_PROGRESS:
             return {
@@ -65,36 +67,19 @@ const usersReducer = (state = initState, action) => {
                     : state.followingInProgress.filter(id => id !== action.userId)
             };
         case SET_USERS:
-            return {
-                ...state,
-                users: action.users
-            };
+            return {...state,users: action.users};
         case SET_CURRENT_PAGE:
-            return {
-                ...state,
-                currentPage: action.currentPage
-            };
+            return {...state,currentPage: action.currentPage};
         case SET_TOTAL_USERS_COUNT:
-            return {
-                ...state,
-                totalItemsCount: action.count
-            };
+            return {...state,totalItemsCount: action.count};
         case SET_IS_FETCHING:
-            return {
-                ...state,
-                isFetching: action.isFetching
-            };
+            return {...state,isFetching: action.isFetching};
         case SET_CURRENT_USERID:
-            return {
-                ...state,
-                currentUserId: action.id
-            };
-
+            return {...state,currentUserId: action.id};
         default:
             return state;
     }
 };
-
 
 /*ThunkCreators*/
 export const requestUsers = (page, pageSize) => {

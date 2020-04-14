@@ -49,7 +49,7 @@ class App extends Component {
                         </React.Suspense>
                     }
                     }/>
-                    <Route path='/Friends' render={() => <FriendsContainer />}/>
+                    {/*<Route path='/Friends' render={() => <FriendsContainer />}/>*/}
                     <Route path='/Users' render={() => <UsersContainer/>}/>
                     <Route path='/News' render={() => <News/>}/>
                     <Route path='/Music' render={() => <Music/>}/>

@@ -1,15 +1,13 @@
 import React from 'react';
 import mod from './Friends.module.sass';
 import Friend from "./Friend/Friend";
-import PropTypes from 'prop-types';
 
-const Friends = ({users}) => {
-
-    let friends = users.map( el => el.followed ? <Friend user={el} /> : '');
+const Friends = ({friends}) => {
+    let myFriends = friends.map( el => <Friend user={el} key={el.id}/>);
 
     return(
         <div className={mod.friends}>
-            {friends}
+            {myFriends}
         </div>
     );
 };

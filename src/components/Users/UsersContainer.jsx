@@ -56,10 +56,7 @@ const mapStateToProps = (state) => {
     }
 };
 
-/*withAuthRedirect(connect(mapStateToProps,
-    {follow, unfollow, setCurrentPage, toggleFollowingInProgress, /!*getUsers: getUsersThunkCreator}*!/ getUsers})(UsersContainer));*/
-
 export default compose(
         connect(mapStateToProps,
-        {follow, unfollow, setCurrentPage, toggleFollowingInProgress, /*getUsers: getUsersThunkCreator}*/ getUsers: requestUsers})
+        {follow, unfollow, setCurrentPage, toggleFollowingInProgress, getUsers: requestUsers})
 )(UsersContainer);

@@ -1,14 +1,26 @@
 import React from 'react';
 import Friends from "./Friends";
 import {connect} from 'react-redux'
-import {getUsers} from "../../redux/usersSelector";
+import {getCurrentPage, getFollowedUsers, getPageSize} from "../../redux/usersSelector";
+
+class FriendsContainer extends React.Component{
+
+    componentDidMount() {
+
+    }
+
+    render(){
+        return <Friends friends={this.props.friends}/>
+    }
+}
 
 const mapStateToProps = (state) => {
+
   return{
-      users: getUsers(state)
+      friends: getFollowedUsers(state),
+      pageSize: getPageSize(state),
+      currentPage: getCurrentPage(state)
   }
 };
 
-const FriendsContainer = connect(mapStateToProps)(Friends);
-
-export default FriendsContainer;
+export default connect(mapStateToProps)(FriendsContainer);

@@ -1,7 +1,6 @@
 import React from 'react';
 import Post from './Post/Post';
 import mod from './NewPost.module.sass';
-import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
 import {maxLength30, required} from "../../../helpers/Validators";
 import {Textarea} from "../../Forms/FormsControl";
@@ -9,20 +8,11 @@ import {Textarea} from "../../Forms/FormsControl";
 const NewPost = React.memo((props) => {
 
     let posts = props.posts;
-    let post = posts.map(el => <Post post={el} likesCount={el}/>);
+    let post = posts.map(el => <Post post={el} likesCount={el} key={el.id}/>);
 
     let addNewPost = (values) => {
         props.addNewPost(values.newPostText);
     };
-
-    /*let addNewPost = () => {
-        props.addPost();
-    };
-
-    let updateNewPost = (e) => {
-        let text = e.currentTarget.value;
-        props.updatePost(text);
-    };*/
 
     return (
         <div className={mod.myPosts}>
@@ -43,8 +33,6 @@ const AddPostForm = (props) => {
             <div className={mod.input}>
                 <Field placeholder="your news..." component={Textarea} name='newPostText'
                 validate={[required, maxLength30]}/>
-                {/*<textarea placeholder="your news..." onChange={updateNewPost}
-                                  ref={newPostText} value={props.newTextPost}></textarea>*/}
             </div>
             <div className={mod.button}>
                 <button className={mod.buttonSignature}>Add</button>
@@ -58,9 +46,3 @@ const AddPostReduxForm = reduxForm({
 })(AddPostForm);
 
 export default NewPost;
-
-NewPost.propsType = {
-    state: PropTypes.object,
-    addPost: PropTypes.func,
-    updatePost: PropTypes.func
-};

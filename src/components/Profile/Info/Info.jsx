@@ -29,7 +29,7 @@ const Info = ({profile, savePhoto, isOwner, status, updateStatus, saveProfile}) 
     return (
         <div className={mod.me}>
             <div className={mod.profileAvatar}>
-                <img src={profile.photos.large} alt="alberto"/>
+                <img src={profile.photos.large} alt="avatar"/>
                 {isOwner &&
                 <label className={mod.profilePhotoLoadButton}>
                     <input type='file' onChange={onMainPhotoChange}/>
